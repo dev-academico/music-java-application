@@ -34,6 +34,6 @@ public class Music implements InterfaceAvlTree {
 
     @Override
     public String toString() {
-        return "Music: " + this.name + " - " + FormatTime();
+        return this.name + " - " + FormatTime();
     }
 }

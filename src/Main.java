@@ -20,9 +20,10 @@ public class Main {
 
         // Search
         Node<Music> node = AVLMusic.search(AVLMusic.root, m4.getKey());
-        System.out.println(AVLMusic.getSearchCount());
-        AVLMusic.resetSearchCount();
+        //System.out.println(AVLMusic.getSearchCount());
+        //AVLMusic.resetSearchCount();
 
-        System.out.println(node.value);
+        String result = AVLMusic.printParentheses(AVLMusic.root);
+        System.out.println(result);
     }
 }

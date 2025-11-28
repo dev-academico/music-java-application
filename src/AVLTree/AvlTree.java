@@ -182,6 +182,39 @@ public class AvlTree<T extends InterfaceAvlTree> {
         this.root = insert(this.root, value.getKey(), value);
     }
 
+    public String printParentheses(Node<T> root) {
+        if (root == null) {
+            return "";
+        }
+
+        // caso folha
+        if (root.left == null && root.right == null) {
+            return String.valueOf(root.key)+" " + String.valueOf(root.value);
+        }
+
+        String left = "";
+        String right = "";
+
+        if (root.left != null) {
+            left = printParentheses(root.left);
+        }
+
+        if (root.right != null) {
+            right = printParentheses(root.right);
+        }
+
+        if (root.left != null && root.right != null) {
+            return root.key +" " + String.valueOf(root.value) + "(" + left + "," + right + ")";
+        }
+
+        if (root.left != null) {
+            return root.key + " " +  String.valueOf(root.value) + "(" + left + ")";
+        }
+
+        return root.key + " " +  String.valueOf(root.value) + "(," + right + ")";
+    }
+
+
     public void delete(int key) {
         this.root = delete(this.root, key);
     }
