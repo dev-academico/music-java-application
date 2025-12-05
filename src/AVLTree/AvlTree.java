@@ -189,7 +189,7 @@ public class AvlTree<T extends InterfaceAvlTree> {
 
         // caso folha
         if (root.left == null && root.right == null) {
-            return String.valueOf(root.key)+" " + String.valueOf(root.value);
+            return String.valueOf(root.value);
         }
 
         String left = "";
@@ -204,14 +204,14 @@ public class AvlTree<T extends InterfaceAvlTree> {
         }
 
         if (root.left != null && root.right != null) {
-            return root.key +" " + String.valueOf(root.value) + "(" + left + "," + right + ")";
+            return String.valueOf(root.value) + "(" + left + "," + right + ")";
         }
 
         if (root.left != null) {
-            return root.key + " " +  String.valueOf(root.value) + "(" + left + ")";
+            return String.valueOf(root.value) + "(" + left + ")";
         }
 
-        return root.key + " " +  String.valueOf(root.value) + "(," + right + ")";
+        return String.valueOf(root.value) + "(," + right + ")";
     }
 
 

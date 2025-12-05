@@ -2,6 +2,8 @@ package model;
 
 import Interfaces.InterfaceAvlTree;
 
+import java.util.Scanner;
+
 public class Music implements InterfaceAvlTree {
     static private int countMusics = 0;
 
@@ -19,10 +21,26 @@ public class Music implements InterfaceAvlTree {
         return id;
     }
 
-    public Music(int time, String name) {
+    public void update(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Atualizando música...");
+        System.out.print("Nome da música: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Tempo de duração da música: ");
+        int duracao = Integer.parseInt(scanner.nextLine());
+
+        this.name = nome;
+        this.time = duracao;
+
+        System.out.println("Música atualizada com sucesso!");
+    }
+
+    public Music(int time, String name, Artist artist) {
         this.id = countMusics++;
         this.time = time;
         this.name = name;
+        this.artist = artist;
     }
 
     public String FormatTime() {
@@ -34,6 +52,6 @@ public class Music implements InterfaceAvlTree {
 
     @Override
     public String toString() {
-        return this.name + " - " + FormatTime();
+       return "Music:" + this.id + " - " + this.name + " - " + FormatTime();
     }
 }
