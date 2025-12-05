@@ -10,13 +10,13 @@ public class Album implements InterfaceAvlTree {
     private int id;
     private int year;
     private String name;
-    private String artist;
+    private Artist artist;
 
     public Album() {
         this.id = countAlbums++;
     }
 
-    public Album(String name, String artist, int year) {
+    public Album(String name, Artist artist, int year) {
         this.id = countAlbums++;
         this.name = name;
         this.artist = artist;
@@ -29,13 +29,9 @@ public class Album implements InterfaceAvlTree {
 
     public void update() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Atualizando álbum...");
 
         System.out.print("Nome do álbum: ");
         this.name = scanner.nextLine();
-
-        System.out.print("Nome do artista: ");
-        this.artist = scanner.nextLine();
 
         System.out.print("Ano de lançamento: ");
         this.year = Integer.parseInt(scanner.nextLine());

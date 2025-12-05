@@ -44,6 +44,6 @@ public class GenericCRUD<T extends InterfaceAvlTree> {
     }
 
     public void ShowAllItems() {
-        tree.printParentheses(this.tree.root);
+        System.out.println(tree.printParentheses(this.tree.root));
     }
 }

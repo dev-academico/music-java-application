@@ -1,16 +1,161 @@
 import AVLTree.AvlTree;
 import AVLTree.Node;
 import genericCRUD.GenericCRUD;
-import model.Music;
+import model.*;
 
 import java.util.Scanner;
 
-public class Main {
-    public static void MenuAlbum() {
 
+
+public class Main {
+    public static GenericCRUD<Album> albumTree = new GenericCRUD<Album>();
+    public static GenericCRUD<Artist> artistTree = new GenericCRUD<Artist>();
+    GenericCRUD<Music> musicTree = new GenericCRUD<Music>();
+    GenericCRUD<Playlist> playlistTree = new GenericCRUD<Playlist>();
+    GenericCRUD<User> userTree = new GenericCRUD<User>();
+
+    public static void MenuAlbum() {
+        while (true) {
+            System.out.println("[Menu Album]");
+            System.out.println("[1 - C] Adicionar album");
+            System.out.println("[2 - R] Listar albuns");
+            System.out.println("[3 - U] Atualizar album");
+            System.out.println("[4 - D] Deletar album");
+            System.out.println("[5] Voltar para o menu principal");
+
+            Scanner scanner = new Scanner(System.in);
+            int escolha = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolha) {
+                case 1 -> {
+                    System.out.println("Adicionando album...");
+                    while (true) {
+                        try {
+                            System.out.print("Nome do album: ");
+                            String nome = scanner.nextLine();
+
+                            System.out.print("Ano do album: ");
+                            int ano = Integer.parseInt(scanner.nextLine());
+
+                            System.out.println("Escolha um artista:");
+                            artistTree.ShowAllItems();
+
+                            int artistaEscolhido = Integer.parseInt(scanner.nextLine());
+                            Artist artista = artistTree.FindItem(artistaEscolhido);
+
+                            Album album = new Album(nome, artista, ano);
+                            albumTree.AddItem(album);
+                            System.out.println("Album adicionado com sucesso!");
+                            break;
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                            System.out.println("Por favor, tente novamente.");
+                        }
+                    }
+                }
+                case 2 -> {
+                    System.out.println("Listando albuns...");
+                    albumTree.ShowAllItems();
+                }
+                case 3 -> {
+                    System.out.println("Atualizando álbum...");
+                    System.out.println("Escolha um album:");
+                    albumTree.ShowAllItems();
+
+                    int albumEscolhido = Integer.parseInt(scanner.nextLine());
+                    albumTree.UpdateItem(albumEscolhido);
+                }
+                case 4 -> {
+                    System.out.println("Deletando album...");
+                    System.out.println("Escolha um album:");
+                    albumTree.ShowAllItems();
+
+                    int albumEscolhido = Integer.parseInt(scanner.nextLine());
+                    Album album = albumTree.FindItem(albumEscolhido);
+                    albumTree.DeleteItem(album);
+                    System.out.println("Album removido com sucesso!");
+                }
+                case 5 -> {
+                    System.out.println("Voltando para o menu principal...");
+                    return;
+                }
+                default ->
+                        System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
     }
 
     public static void MenuArtista() {
+        while (true) {
+            System.out.println("[Menu Artista]");
+            System.out.println("[1 - C] Adicionar artista");
+            System.out.println("[2 - R] Listar artistas");
+            System.out.println("[3 - U] Atualizar artista");
+            System.out.println("[4 - D] Deletar artista");
+            System.out.println("[5] Voltar para o menu principal");
+
+            Scanner scanner = new Scanner(System.in);
+            int escolha = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolha) {
+                case 1 -> {
+                    System.out.println("Adicionando artista...");
+                    while (true) {
+                        try {
+                            System.out.print("Nome do artista: ");
+                            String nome = scanner.nextLine();
+
+                            System.out.print("Genero musical do artista: ");
+                            String genre = scanner.nextLine();
+
+                            System.out.print("País do artista: ");
+                            String country = scanner.nextLine();
+
+                            System.out.print("CPF do artista: ");
+                            String cpf = scanner.nextLine();
+
+                            Artist artista = new Artist(nome, genre, country, cpf);
+                            artistTree.AddItem(artista);
+                            System.out.println("Artista adicionado com sucesso!");
+                            break;
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                            System.out.println("Por favor, tente novamente.");
+                        }
+                    }
+                }
+                case 2 -> {
+                    System.out.println("Listando albuns...");
+                    albumTree.ShowAllItems();
+                }
+                case 3 -> {
+                    System.out.println("Atualizando álbum...");
+                    System.out.println("Escolha um album:");
+                    albumTree.ShowAllItems();
+
+                    int albumEscolhido = Integer.parseInt(scanner.nextLine());
+                    albumTree.UpdateItem(albumEscolhido);
+                }
+                case 4 -> {
+                    System.out.println("Deletando album...");
+                    System.out.println("Escolha um album:");
+                    albumTree.ShowAllItems();
+
+                    int albumEscolhido = Integer.parseInt(scanner.nextLine());
+                    Album album = albumTree.FindItem(albumEscolhido);
+                    albumTree.DeleteItem(album);
+                    System.out.println("Album removido com sucesso!");
+                }
+                case 5 -> {
+                    System.out.println("Voltando para o menu principal...");
+                    return;
+                }
+                default ->
+                        System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
 
     }
 
@@ -43,7 +188,6 @@ public class Main {
                 case 4 -> MenuPlaylist();
                 case 5 -> MenuUsuarios();
                 case 6 -> System.out.println("Saindo do sistema...");
-                return;
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
