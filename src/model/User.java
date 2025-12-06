@@ -22,7 +22,6 @@ public class User implements InterfaceAvlTree {
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Atualizando usuário...");
         System.out.print("Nome do usuário: ");
         String nome = scanner.nextLine();
 
@@ -44,6 +43,6 @@ public class User implements InterfaceAvlTree {
 
     @Override
     public String toString() {
-        return "User:" + this.id + " - " + this.cpf + " - " + this.name + " - " + this.email ;
+        return "User:" + this.id + "\nCPF: " + this.cpf + "\nName: " + this.name + "\nEmail: " + this.email ;
     }
 }

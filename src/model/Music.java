@@ -23,7 +23,6 @@ public class Music implements InterfaceAvlTree {
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Atualizando música...");
         System.out.print("Nome da música: ");
         String nome = scanner.nextLine();
 

@@ -21,7 +21,6 @@ public class Playlist implements InterfaceAvlTree {
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Atualizando playlist...");
         System.out.print("Nome da playlist: ");
         String nome = scanner.nextLine();
 

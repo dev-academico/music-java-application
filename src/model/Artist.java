@@ -25,7 +25,6 @@ public class Artist implements InterfaceAvlTree {
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Atualizando artista...");
         System.out.print("Nome do artista: ");
         String nome = scanner.nextLine();
 
