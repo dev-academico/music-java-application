@@ -4,6 +4,9 @@ import AVLTree.AvlTree;
 import AVLTree.Node;
 import Interfaces.InterfaceAvlTree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GenericCRUD<T extends InterfaceAvlTree> {
     AvlTree<T> tree;
 
@@ -37,6 +40,14 @@ public class GenericCRUD<T extends InterfaceAvlTree> {
         itemToBeUpdated.update();
 
         return itemToBeUpdated;
+    }
+
+    public List<T> GetABunchOfItems(int[] listOfItems) {
+        List<T> items = new ArrayList<>();
+        for(int  i : listOfItems) {
+            items.add(FindItem(i));
+        }
+        return items;
     }
 
     public void ShowItem(T item) {

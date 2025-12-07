@@ -2,6 +2,8 @@ package model;
 
 import Interfaces.InterfaceAvlTree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Artist implements InterfaceAvlTree {
@@ -12,6 +14,7 @@ public class Artist implements InterfaceAvlTree {
     private String genre;
     private String country;
     private String cpf;
+    private List<Music> musics = new ArrayList<>();
 
     public Artist() {
         this.id = countArtists++;
@@ -22,6 +25,8 @@ public class Artist implements InterfaceAvlTree {
     public int getKey() {
         return id;
     }
+
+    public String getName() {return name;}
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
@@ -50,8 +55,12 @@ public class Artist implements InterfaceAvlTree {
         this.cpf = cpf;
     }
 
+    public void addMusic(Music music){
+        this.musics.add(music);
+    }
+
     @Override
     public String toString() {
-        return "Artist:" + + this.id + " - " + this.cpf + " - " + this.name + " - " + this.genre + " - " + this.country;
+        return "Artist:" + + this.id + "\nCPF: " + this.cpf + "\nName: " + this.name + "\nGenre: " + this.genre + "\nCountry: " + this.country;
     }
 }

@@ -2,6 +2,7 @@ package model;
 
 import Interfaces.InterfaceAvlTree;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Playlist implements InterfaceAvlTree {
@@ -10,6 +11,8 @@ public class Playlist implements InterfaceAvlTree {
     private int id;
     private String name;
     private String description;
+    private List<Music> musics;
+    private User user;
 
     public Playlist() {
        this.id = countPlaylists++;
@@ -18,6 +21,8 @@ public class Playlist implements InterfaceAvlTree {
     public int getKey() {
         return id;
     }
+
+    public String getName() { return name; }
 
     public void update(){
         Scanner scanner = new Scanner(System.in);
@@ -32,14 +37,17 @@ public class Playlist implements InterfaceAvlTree {
         System.out.println("Playlist atualizada com sucesso!");
     }
 
-    public Playlist(String name, String description) {
+    public Playlist(String name, String description, User user, List<Music> musics) {
         this.id = countPlaylists++;
         this.name = name;
         this.description = description;
+        this.musics = musics;
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Playlist:" + this.id + " - " + this.name + " - " + this.description ;
+        String userInfo = (this.user != null) ? this.user.getName() + " (ID: " + this.user.getKey() + ")" : "Nenhum usuário.";
+        return "Playlist:" + this.id + "\nName:" + this.name + "\nDescription: " + this.description + "\nUser: " + userInfo+ "\nList of songs: " + this.musics.toString();
     }
 }

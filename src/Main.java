@@ -3,6 +3,7 @@ import AVLTree.Node;
 import genericCRUD.GenericCRUD;
 import model.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -44,7 +45,15 @@ public class Main {
                             int artistaEscolhido = Integer.parseInt(scanner.nextLine());
                             Artist artista = artistTree.FindItem(artistaEscolhido);
 
-                            Album album = new Album(nome, artista, ano);
+                            System.out.println("Escolha as músicas do artista(ex: 1,2,3): ");
+                            musicTree.ShowAllItems();
+                            String entrada = scanner.nextLine();
+                            String[] partes = entrada.split(",");
+                            int[] numeros = new int[partes.length];
+                            List<Music> musics = musicTree.GetABunchOfItems(numeros);
+
+
+                            Album album = new Album(nome, artista, ano, musics);
                             albumTree.AddItem(album);
                             System.out.println("Album adicionado com sucesso!");
                             break;
@@ -190,6 +199,7 @@ public class Main {
                             Artist artista = artistTree.FindItem(artistaEscolhido);
 
                             Music musica = new Music(time, nome, artista);
+                            artista.addMusic(musica);
                             musicTree.AddItem(musica);
                             System.out.println("Música adicionada com sucesso!");
                             break;
@@ -255,7 +265,22 @@ public class Main {
                             System.out.print("Descrição da playlist: ");
                             String description = scanner.nextLine();
 
-                            Playlist playlits = new Playlist(nome, description);
+                            System.out.println("Escolha o usuário da playlist: ");
+                            userTree.ShowAllItems();
+
+                            int usuarioEscolhido = Integer.parseInt(scanner.nextLine());
+                            User usuario = userTree.FindItem(usuarioEscolhido);
+
+                            System.out.println("Escolha as músicas do artista(ex: 1,2,3): ");
+                            musicTree.ShowAllItems();
+                            String entrada = scanner.nextLine();
+                            String[] partes = entrada.split(",");
+                            int[] numeros = new int[partes.length];
+                            List<Music> musics = musicTree.GetABunchOfItems(numeros);
+
+                            Playlist playlits = new Playlist(nome, description, usuario, musics);
+                            usuario.addPlaylist(playlits);
+
                             playlistTree.AddItem(playlits);
                             System.out.println("Playlist adicionada com sucesso!");
                             break;
@@ -374,7 +399,7 @@ public class Main {
             System.out.println("[3] Gerenciar música");
             System.out.println("[4] Gerenciar playlist");
             System.out.println("[5] Gerenciar usuários");
-            System.out.println("[7] Sair");
+            System.out.println("[6] Sair");
 
             Scanner scanner = new Scanner(System.in);
             int escolha = scanner.nextInt();

@@ -11,6 +11,7 @@ public class User implements InterfaceAvlTree {
     private String cpf;
     private String name;
     private String email;
+    private Playlist playlist;
 
     public User() {
         // Add input logic
@@ -41,8 +42,15 @@ public class User implements InterfaceAvlTree {
         this.cpf = cpf;
     }
 
+    public String getName(){return this.name;}
+
+    public void addPlaylist(Playlist playlist){
+        this.playlist = playlist;
+    }
+
     @Override
     public String toString() {
-        return "User:" + this.id + "\nCPF: " + this.cpf + "\nName: " + this.name + "\nEmail: " + this.email ;
+        String playlistInfo = (this.playlist != null) ? this.playlist.getName() + " (ID: " + this.playlist.getKey() + ")" : "Nenhuma playlist associada.";
+        return "User:" + this.id + "\nCPF: " + this.cpf + "\nName: " + this.name + "\nEmail: " + this.email + "\nPlaylist: " + playlistInfo;
     }
 }

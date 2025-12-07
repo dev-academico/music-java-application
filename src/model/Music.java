@@ -21,6 +21,8 @@ public class Music implements InterfaceAvlTree {
         return id;
     }
 
+    public String getName() {return name;}
+
     public void update(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nome da música: ");
@@ -51,6 +53,7 @@ public class Music implements InterfaceAvlTree {
 
     @Override
     public String toString() {
-       return "Music:" + this.id + " - " + this.name + " - " + FormatTime();
+        String userInfo = (this.artist != null) ? this.artist.getName() + " (ID: " + this.artist.getKey() + ")" : "Nenhum artista.";
+       return "Music:" + this.id + "\nName: " + this.name + "\nTime duration: " + FormatTime() + "\nArtist: " + userInfo;
     }
 }

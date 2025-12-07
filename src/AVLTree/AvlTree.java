@@ -211,7 +211,7 @@ public class AvlTree<T extends InterfaceAvlTree> {
             return String.valueOf(root.value) + "(" + left + ")";
         }
 
-        return String.valueOf(root.value) + "(," + right + ")";
+        return String.valueOf(root.value) + "(" + right + ")";
     }
 
 
