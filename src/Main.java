@@ -50,6 +50,9 @@ public class Main {
                             String entrada = scanner.nextLine();
                             String[] partes = entrada.split(",");
                             int[] numeros = new int[partes.length];
+                            for (int i = 0; i < partes.length; i++) {
+                                numeros[i] = Integer.parseInt(partes[i].trim());
+                            }
                             List<Music> musics = musicTree.GetABunchOfItems(numeros);
 
 
@@ -276,6 +279,9 @@ public class Main {
                             String entrada = scanner.nextLine();
                             String[] partes = entrada.split(",");
                             int[] numeros = new int[partes.length];
+                            for (int i = 0; i < partes.length; i++) {
+                                numeros[i] = Integer.parseInt(partes[i].trim());
+                            }
                             List<Music> musics = musicTree.GetABunchOfItems(numeros);
 
                             Playlist playlits = new Playlist(nome, description, usuario, musics);
